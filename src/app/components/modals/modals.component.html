@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 mat-dialog-title style="text-align: center;" class="texto"><b>Mensaje de confirmación</b></h1>
+  <div mat-dialog-content style="text-align: center;">
+    <p class="texto">{{mensaje}}</p>
+  
+  </div>
+  <div mat-dialog-actions class="justify-content-center">
+    <button mat-button (click)="onNoClick()" class="texto bg-white">Cancelar</button>
+    <button mat-button [mat-dialog-close]="btn" cdkFocusInitial class="texto bg-white">Aceptar</button>
+  </div>
+</div>
+

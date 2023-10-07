@@ -1,0 +1,58 @@
+<div class="container">
+
+    <!--Cabecera Lista de libros-->
+    <div class="d-flex justify-content-center mt-3">
+      <h1 class="texto-principal">Lista de libros</h1>
+    </div>
+
+    <div class="row">
+      <!-- Libros disponibles-->
+      <div class="col-lg-6" style="margin-left: -20px;">
+        <h1 class="texto-principal">{{ books.length }} libros disponibles</h1>
+        <h3 *ngIf="listaLectura.length > 0" class="texto-principal">{{listaLectura.length}} en la lista de lectura</h3>
+        <div class="card filtro">
+          <div class="card-body">
+            <div class="row mx-1">
+              <!--Filtro de paginas-->
+              <div class="col-lg-5 text-center">
+                <h4 class="texto-principal ">Filtrar por páginas</h4>
+                <input type="range" [(ngModel)]="paginaActual" min="1" [max]="maxPagina" step="1" (click)="cambiarPagina()">
+                <br>
+                <span>{{ paginaActual }}</span>
+              </div>
+              <!--Filtro por genero-->
+              <div class="col-lg-5 offset-lg-1">
+                <h4 class="texto-principal">Filtrar por género</h4>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="generoSeleccionado" (change)="onGeneroChange()">
+                    <option value="Todas">Todas</option>
+                    <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---Lista de libros-->
+        <div class="row row-cols-1 row-cols-md-4 g-4 mt-1" style="width: 700px;">
+          <div *ngFor="let element of books; let i = index" class="card-books" [class.disabled]="isBookDisabled(element.book.ISBN)" (click)="agregar(element.book.ISBN)" >
+              <img [src]="element.book.cover" class="card-img-top img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Libros deseados -->
+      <div *ngIf="listaLectura.length > 0" class="col-lg-3 justify-content-center text-center" style="margin-left: 280px; width: 360px; background-color: rgb(3, 7, 18); border: 3px solid rgb(162, 162, 162); border-radius: 20px 20px;">
+        <!--Cabecera Lista de libros-->
+        <h1 class="texto-principal mt-2">Lista de Lectura</h1>
+        <!--Lista de libros lectura -->
+        <div class="row row-cols-1 row-cols-md-4 g-4 mt-1 mx-1" style="width: 340px;">
+          <div *ngFor="let element of listaLectura;" class="card-books">             
+            <img [src]="element.book.cover" class="card-img-top img" >
+            <button class="eliminar-button">
+              <i class="fas fa-times" (click)="deleteBook(element.book.ISBN)"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

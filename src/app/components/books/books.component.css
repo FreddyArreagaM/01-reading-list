@@ -1,0 +1,51 @@
+.card-body{
+    background-color: grey;
+}
+
+.filtro{
+    width: 550px;
+}
+
+.img{
+    height: 200px;
+    width: 140px;
+}
+
+.card-books{
+    height: 200px;
+    width: 150px;
+    margin-right: 10px;
+    position: relative;
+    display: inline-block; /* Para que el contenedor solo ocupe el espacio necesario */
+}
+
+.books{
+    width: 300px;
+}
+
+.eliminar-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.eliminar-button i {
+    font-size: 24px; /* Tamaño del icono */
+    color: red; /* Color del icono */
+}
+
+.disabled {
+    pointer-events: none; /* Deshabilita el clic en el elemento */
+    opacity: 0.7; /* Aplica un estilo oscuro al elemento */
+}
+
+.form-select{
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
+}
+

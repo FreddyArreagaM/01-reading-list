@@ -3,7 +3,7 @@
 Prueba Técnica: 01 - Desarrollo de una Aplicación de Lista de Libros 
 https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list
 
-• El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
+• El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.                       
 • Prueba basada en esta prueba real para Juniors.                                                                                                  
 • Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código. 
 

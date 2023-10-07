@@ -33,9 +33,15 @@ export class BooksComponent implements OnInit{
         }
       }
     });
-    this._bookService.getJsonData();
-    this.obtenerLibros();
-    this.consultarGeneros();
+
+    //Validamos que se hayan cargado los datos en el local Storage
+    //Procedemos a pedirlos para la vista
+    this._bookService.cargarData().then(data=>{
+      if(data){
+        this.obtenerLibros(); // Actualiza la vista
+        this.consultarGeneros();
+      }
+    })
     this.obtenerLibroslistaLectura();
   }
 

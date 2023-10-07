@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
@@ -9,35 +8,34 @@ export class BookService {
   private jsonUrl = '../../assets/data/books.json';
   private jsonData: any[] = [];
   
-  constructor(private http: HttpClient) {
+  constructor() {
    const storedData = localStorage.getItem('jsonData');
     if (storedData) {
       this.jsonData = JSON.parse(storedData);
     }
   }
 
-  //Metodo para obtener los datos del json y cargarlos al local Storage
-  cargarData(){
-    fetch(this.jsonUrl)
-    .then((response) => response.json())
-    .then((data:any) => {
-      try {
-        this.jsonData = data.library; // Almacena los datos en la lista
-        localStorage.setItem('jsonData', JSON.stringify(this.jsonData));
-      } catch (error) {
-        console.error(`Error al guardar datos en el localStorage: ${error}`);
-      }
-    })
-    .catch((error) => {
-      console.error('Error al cargar el JSON:', error);
+  cargarData() {
+    return new Promise((resolve) => {
+      fetch(this.jsonUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          try {
+            this.jsonData = data.library; // Almacena los datos en la lista
+            localStorage.setItem('jsonData', JSON.stringify(this.jsonData));
+            resolve(true); // Resuelve la promesa como exitosa
+          } catch (error) {
+            console.error(`Error al guardar datos en el localStorage: ${error}`);
+            resolve(false); // Resuelve la promesa como fallida
+          }
+        })
+        .catch((error) => {
+          console.error('Error al cargar el JSON:', error);
+          resolve(false); // Resuelve la promesa como fallida
+        });
     });
   }
-
-  //Metodo para lllamar otener los libros del json Data
-  getJsonData(){
-    this.cargarData();
-  }
-
+  
   //Metodo para obtener los libros y paginarlos
   getBooksPagina(paginaActual: number, elementosPorPagina: number): Observable<any[]> {
     const inicio = (paginaActual - 1) * elementosPorPagina;

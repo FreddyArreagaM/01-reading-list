@@ -1,6 +1,6 @@
 # Reading List
 
-LinkUrl App: https://reading-list-book.netlify.app/
+LinkApp: https://reading-list-book.netlify.app/
 
 Prueba Técnica: 01 - Desarrollo de una Aplicación de Lista de Libros 
 https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list
